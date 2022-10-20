@@ -1,6 +1,7 @@
-export const PROPS = {
-    API_KEY: "AIzaSyDvbPoxxB568FMOWFNp9xmXww-pPeAgOFU",
-    CLIENT_ID: "1a384585-1591-4a22-aaf1-bdc9121bc448",
-    CLIENT_SECRET: "f6XzjQTDdtlH6TszKhTKTa591tgW1pYh"    
+export const AVENUECONFIGS = {
+    API_KEY: process.env.API_KEY ?? '',
+    CLIENT_ID: process.env.CLIENT_ID ?? '',
+    CLIENT_SECRET: process.env.CLIENT_SECRET ?? '',
+    CLIENT_EMAIL: process.env.CLIENT_EMAIL ?? ''
 }
 
