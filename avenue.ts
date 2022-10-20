@@ -1,47 +1,32 @@
 import axios from "axios"
+import { CredentialRequest } from "./credential"
+import { PATH } from "./path"
+import { PROPS } from "./constant"
 
-const API_KEY = ""
-const AVENUE_API_URL = ""
-const AUTHORIZE_APP = `${AVENUE_API_URL}/auth/authorize_app`
-const AUTHORIZATION_STATUS = `${AVENUE_API_URL}/auth/authorizaiton_status`
-const AUTH_TOKENS = `${AVENUE_API_URL}/auth/tokens`
-const GET_PUBLIC_KEY = `${AVENUE_API_URL}/auth/keys`
-const REFRESH_TOKENS = `${AVENUE_API_URL}/auth/refresh_token`
-
-const CLIENT_ID = ""
-const CLIENT_SECRET = ""
-const USER_EMAIL = ""
-
-class AuthorizeAppRequest {
-    readonly params =  { key: API_KEY }
-    readonly client_id: string = CLIENT_ID
-    readonly client_secret: string = CLIENT_SECRET
-
+class AuthorizeAppRequest extends CredentialRequest {
     constructor(
         readonly user_email: string
-    ) {}
+    ) {
+        super()
+    }
 }
 
-class CodeRequest {
-    readonly params =  { key: API_KEY }
-    readonly client_id: string = CLIENT_ID
-    readonly client_secret: string = CLIENT_SECRET
-
+class CodeRequest extends CredentialRequest {
     constructor(
         readonly code: string
-    ) {}
+    ) {
+        super()
+    }
 }
 
-class RefreshTokensRequest {
-    readonly params =  { key: API_KEY }
-    readonly client_id: string = CLIENT_ID
-    readonly client_secret: string = CLIENT_SECRET
-
+class RefreshTokensRequest extends CredentialRequest {
     constructor(
         readonly access_token: string,
         readonly refresh_token: string,
         readonly code: string
-    ) {}
+    ) {
+        super()
+    }
 }
 
 interface AuthorizeAppResponse {
@@ -80,31 +65,31 @@ interface RefreshTokensResponse {
 
 export class AvenueRequest {
     
-    async authorizeApp(): Promise<AuthorizeAppResponse> {
+    async authorizeApp(user_email: string): Promise<AuthorizeAppResponse> {
         return await axios.post(
-            AUTHORIZE_APP,
-            new AuthorizeAppRequest(USER_EMAIL)
+            PATH.AUTHORIZE_APP,
+            new AuthorizeAppRequest(user_email)
         )
     }
 
     async authorizizationStatus(code: string): Promise<AuthorizeAppStatusResponse> {
         return await axios.post(
-            AUTHORIZATION_STATUS,
+            PATH.AUTHORIZATION_STATUS,
             new CodeRequest(code)
         ) 
     }
 
     async authTokens(code: string): Promise<TokensResponse> {
         return await axios.post(
-            AUTH_TOKENS,
+            PATH.AUTH_TOKENS,
             new CodeRequest(code)
         )
     }
 
     async getPublicKey(): Promise<GetPublicKeyResponse> {
         return await axios.get(
-            GET_PUBLIC_KEY,
-            { params: { key: API_KEY }}
+            PATH.GET_PUBLIC_KEY,
+            { params: { key: PROPS.API_KEY }}
         )
     }
 
@@ -114,7 +99,7 @@ export class AvenueRequest {
         refresh_token: string
     ): Promise<RefreshTokensResponse> {
         return await axios.post(
-            REFRESH_TOKENS,
+            PATH.REFRESH_TOKENS,
             new RefreshTokensRequest(access_token, refresh_token, code)
         )
     }
