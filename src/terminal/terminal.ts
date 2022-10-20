@@ -1,8 +1,8 @@
 import * as dotenv from 'dotenv'
 dotenv.config()
-import { AvenueRequest } from "./avenue"
-import { PATH } from './path'
-import { AVENUECONFIGS } from "./constant"
+import { AvenueRequest } from "../avenue.js"
+import { PATH } from '../path.js'
+import { AVENUECONFIGS } from "../constant.js"
 
 const sout = (path: string, response: any) => {
     console.log('[AVENUE RESPONSE]');
