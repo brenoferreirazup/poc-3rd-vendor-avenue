@@ -5,9 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "build": "npx tsc",
-    "start:dev": "npm run build && npm run start:cli",
-    "start:cli": "node dist/terminal/terminal.js",
-    "start:web": "node dist/web/index.js",
+    "start:cli": "npm run build && node dist/terminal/terminal.js",
+    "start:web": "npm run build && node dist/web/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
