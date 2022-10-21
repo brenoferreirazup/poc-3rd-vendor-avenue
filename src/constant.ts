@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 export const AVENUECONFIGS = {
     API_KEY: process.env.API_KEY ?? '',
     CLIENT_ID: process.env.CLIENT_ID ?? '',
