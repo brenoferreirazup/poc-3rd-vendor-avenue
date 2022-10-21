@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "944054d3-36e3-4fbe-b8d8-2cf70b155475",
+		"name": "poc-avenue",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/avenue/all-api-requests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/avenue/all-api-requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"avenue",
+						"all-api-requests"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
